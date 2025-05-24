@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v4 # repo checkout
       - name: Setup toolchain for wasm
         run: |
-          rustup update stable
-          rustup default stable
+          rustup update nightly
+          rustup default nightly
           rustup set profile minimal
           rustup target add wasm32-unknown-unknown
       - name: Rust Cache # cache the rust build artefacts
@@ -38,7 +38,7 @@ jobs:
         # will obviously return error 404 not found.
         run: ./trunk build --release --public-url $public_url
         env:
-          public_url: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          public_url: "henry.is-a.dev"
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
