@@ -14,6 +14,7 @@ eframe = { version = "0.31", default-features = false, features = [
     "default_fonts", # Embed the default egui fonts.
     "glow",          # Use the glow rendering backend. Alternative: "wgpu".
     "wayland",       # To support Linux (and CI)
+    "x11",
 ] }
 log = "0.4.27"
 
@@ -24,11 +25,13 @@ image = { version = "0.25", features = ["jpeg", "png"] }
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 env_logger = "0.11.8"
+webbrowser = "1.0.5"
 
 # web:
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen-futures = "0.4.50"
-web-sys = "0.3.70"              # to access the DOM (to hide the loading text)
+web-sys = { version = "0.3.70", features = ["Window"] }
+wasm-bindgen = "0.2.100"
 
 [profile.release]
 opt-level = 2 # fast and small wasm

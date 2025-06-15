@@ -1,4 +1,4 @@
-use egui::{Color32, FontId, TextStyle, Visuals};
+use egui::{Color32, FontId, TextStyle, Vec2, Visuals};
 
 pub struct TemplateApp {}
 
@@ -77,6 +77,27 @@ impl eframe::App for TemplateApp {
             });
         });
 
+        egui::Window::new("Affiliates").show(ctx, |ui| {
+            ui.label("These are some cool people that make cool projects.");
+            ui.add_space(8.0);
+            egui::Grid::new("affiliated_projects")
+                .spacing(Vec2::new(0.0, 8.0))
+                .show(ui, |ui| {
+                    if ui
+                        .add_sized(
+                            Vec2::new(128.0, 128.0),
+                            egui::ImageButton::new(egui::include_image!("../assets/pita.webp"))
+                                .corner_radius(4),
+                        )
+                        .clicked()
+                    {
+                        open_url("https://pita.im/");
+                    }
+
+                    ui.end_row();
+                });
+        });
+
         egui::Window::new("Swirly").show(ctx, |ui| {
             ui.label("Swirly is a desktop shell for the Sway and Wayfire compositors. The project is written in Rust and uses Relm4 for the rendering. I currently daily drive it and its the project that I'm the most proud of.");
             ui.add_space(8.0);
@@ -149,4 +170,20 @@ fn powered_by_egui_and_eframe(ui: &mut egui::Ui) {
         );
         ui.label(".");
     });
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn open_url(url: &str) {
+    if let Err(e) = webbrowser::open(url) {
+        println!("Failed to open {url}: {e}") // TODO improve logging
+    };
+}
+
+#[cfg(target_arch = "wasm32")]
+fn open_url(url: &str) {
+    if let Some(win) = web_sys::window() {
+        if let Err(e) = win.open_with_url(url) {
+            println!("Failed to open {url}") // TODO improve logging
+        };
+    }
 }
