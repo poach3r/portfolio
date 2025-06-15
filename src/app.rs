@@ -182,7 +182,7 @@ fn open_url(url: &str) {
 #[cfg(target_arch = "wasm32")]
 fn open_url(url: &str) {
     if let Some(win) = web_sys::window() {
-        if let Err(e) = win.open_with_url(url) {
+        if let Err(_e) = win.open_with_url(url) {
             println!("Failed to open {url}") // TODO improve logging
         };
     }
