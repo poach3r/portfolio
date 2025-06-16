@@ -81,7 +81,8 @@ impl eframe::App for TemplateApp {
             ui.label("These are some cool people.");
             ui.add_space(2.0);
             ui.centered_and_justified(|ui| {
-                egui::Grid::new("affiliated_projects").spacing(Vec2::new(8.0, 8.0))
+                egui::Grid::new("affiliated_projects")
+                    .spacing(Vec2::new(8.0, 8.0))
                     .show(ui, |ui| {
                         if ui
                             .add_sized(
@@ -97,8 +98,10 @@ impl eframe::App for TemplateApp {
                         if ui
                             .add_sized(
                                 Vec2::new(128.0, 128.0),
-                                egui::ImageButton::new("https://avatars.githubusercontent.com/u/208179266?v=4")
-                                    .corner_radius(4),
+                                egui::ImageButton::new(
+                                    "https://avatars.githubusercontent.com/u/208179266?v=4",
+                                )
+                                .corner_radius(4),
                             )
                             .clicked()
                         {
@@ -110,22 +113,24 @@ impl eframe::App for TemplateApp {
                         if ui
                             .add_sized(
                                 Vec2::new(128.0, 128.0),
-                                egui::ImageButton::new(egui::include_image!("../assets/icon-256.png"))
-                                    .corner_radius(4),
+                                egui::ImageButton::new(egui::include_image!(
+                                    "../assets/icon-256.png"
+                                ))
+                                .corner_radius(4),
                             )
                             .clicked()
-                        {
-                        }
+                        {}
 
                         if ui
                             .add_sized(
                                 Vec2::new(128.0, 128.0),
-                                egui::ImageButton::new(egui::include_image!("../assets/icon-256.png"))
-                                    .corner_radius(4),
+                                egui::ImageButton::new(egui::include_image!(
+                                    "../assets/icon-256.png"
+                                ))
+                                .corner_radius(4),
                             )
                             .clicked()
-                        {
-                        }
+                        {}
                     });
             });
         });
