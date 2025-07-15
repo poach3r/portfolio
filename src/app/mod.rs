@@ -2,7 +2,7 @@ mod desktop;
 mod entries;
 mod mobile;
 
-use egui::{Color32, FontId, TextStyle, Vec2, Visuals};
+use egui::{Color32, FontId, TextStyle, Visuals};
 
 pub struct TemplateApp {}
 

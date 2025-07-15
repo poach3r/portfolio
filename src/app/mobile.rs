@@ -1,5 +1,5 @@
 use crate::app::entries;
-use egui::{Color32, Context, FontId, TextStyle, Vec2, Visuals};
+use egui::Context;
 
 pub fn ui(ctx: &Context) {
     egui::CentralPanel::default().show(ctx, |ui| {

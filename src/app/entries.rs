@@ -1,5 +1,5 @@
 use egui::Ui;
-use egui::{Color32, Context, FontId, TextStyle, Vec2, Visuals};
+use egui::Vec2;
 
 pub fn swirly(ui: &mut Ui) {
     ui.label("Swirly is a desktop shell for the Sway and Wayfire compositors. The project is written in Rust and uses Relm4 for the rendering. I currently daily drive it and its the project that I'm the most proud of.");
@@ -81,8 +81,6 @@ pub fn affiliates(ui: &mut Ui) {
                     open_url("https://draco.is-a.dev//");
                 }
 
-                ui.end_row();
-
                 if ui
                     .add_sized(
                         Vec2::new(128.0, 128.0),
@@ -91,6 +89,8 @@ pub fn affiliates(ui: &mut Ui) {
                     )
                     .clicked()
                 {}
+
+                ui.end_row();
 
                 if ui
                     .add_sized(
