@@ -71,17 +71,6 @@ pub fn affiliates(ui: &mut Ui) {
                 if ui
                     .add_sized(
                         Vec2::new(128.0, 128.0),
-                        egui::ImageButton::new(egui::include_image!("../../assets/pita.webp"))
-                            .corner_radius(4),
-                    )
-                    .clicked()
-                {
-                    open_url("https://pita.im/");
-                }
-
-                if ui
-                    .add_sized(
-                        Vec2::new(128.0, 128.0),
                         egui::ImageButton::new(
                             "https://avatars.githubusercontent.com/u/208179266?v=4",
                         )
@@ -93,6 +82,15 @@ pub fn affiliates(ui: &mut Ui) {
                 }
 
                 ui.end_row();
+
+                if ui
+                    .add_sized(
+                        Vec2::new(128.0, 128.0),
+                        egui::ImageButton::new(egui::include_image!("../../assets/icon-256.png"))
+                            .corner_radius(4),
+                    )
+                    .clicked()
+                {}
 
                 if ui
                     .add_sized(
