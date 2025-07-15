@@ -1,6 +1,5 @@
 {
   inputs = {
-    naersk.url = "github:nix-community/naersk/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     utils.url = "github:numtide/flake-utils";
   };
@@ -9,12 +8,10 @@
     self,
     nixpkgs,
     utils,
-    naersk,
   }:
     utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {inherit system;};
-        naersk-lib = pkgs.callPackage naersk {};
         libPath = with pkgs;
           lib.makeLibraryPath [
             libGL
@@ -26,7 +23,6 @@
             xorg.libXrandr
           ];
       in {
-        defaultPackage = naersk-lib.buildPackage ./.;
         devShell = with pkgs;
           mkShell {
             buildInputs = [cargo rustc rustfmt rust-analyzer pre-commit rustPackages.clippy];
